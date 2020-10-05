@@ -22,6 +22,7 @@
 - [x] 4. Install GNS3 Server
   - [x] 4.1 Set GNS3 server as a daemon (auto start at boot time)
 - [x] 5. Testing GNS3Server
+- [x] 6. Installing terminal based system monitoring tool
 ---
 ## 1. Prepare your Google Cloud environment
 Before you begin Set you project default region and zone.<br/>
@@ -240,6 +241,17 @@ ls ~
 Find your instance Public IP and connect to it using browser<br/>
 _example:_ http://0.0.0.0:3080
 
+ ## 6. Installing terminal based system monitoring tool
+ Install gotop for system monitoring.
+ ```bash
+ cd ~
+wget https://github.com/xxxserxxx/gotop/releases/download/v4.0.1/gotop_v4.0.1_linux_amd64.tgz
+tar -xf gotop_v4.0.1_linux_amd64.tgz
+sudo mv gotop /usr/bin/
+rm gotop_v4.0.1_linux_amd64.tgz
+sudo gotop
+
+ ```
 ---
 ▀▄▀▄▀▄ [ Follow us on ] ▄▀▄▀▄▀<br/>
 Website:    https://www.infotechca.com<br/>
