@@ -87,7 +87,7 @@ gcloud compute instances create gns3server --zone asia-southeast1-b \
 ### 2.4 Create a Firewall rule to allow GNS3 on port **`3080`**
 You must have to allow TCP port `3080` in the GCP firewall to access GNS3 Server.
 ```bash
-gcloud compute firewall-rules create gns3 --action=ALLOW --rules=tcp:3080`
+gcloud compute firewall-rules create gns3 --action=ALLOW --rules=tcp:3080
 ```
 ### 2.5 Confirm that nested virtualization is enabled in the VM
 Connect to your newly created instance with SSH.
