@@ -1,4 +1,4 @@
-# How to Install GNS3 Server on Google Cloud (**_KVM Enabled VM_**)
+# Install GNS3 Server on Google Cloud (**_KVM Enabled VM_**)
 
 **Tested on Debian10 and Ubuntu 20**
 ## _Steups to do_
