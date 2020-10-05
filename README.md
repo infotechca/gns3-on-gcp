@@ -161,6 +161,7 @@ cd ~
 
 ```bash
 sudo apt install wget
+
 cd ~
 wget https://github.com/GNS3/vpcs/releases/download/v0.6.1/vpcs
 chmod +x vpcs
@@ -182,9 +183,11 @@ sudo apt install docker.io
 ### 3.6 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 ```bash
 sudo adduser gns3
+
 sudo adduser gns3 sudo
 sudo adduser gns3 kvm
 sudo adduser gns3 docker
+
 ```
 ---
 ##  4. Install GNS3 Server
@@ -202,6 +205,7 @@ cd init
 sudo cp gns3.service.systemd /lib/systemd/system/gns3.service
 sudo chown root /lib/systemd/system/gns3.service
 cd ~
+
 ```
 ### 4.1 Set GNS3 server as a daemon (auto start at boot time)
 ```bash
@@ -219,6 +223,7 @@ login with gns3 user:
 ```bash
 sudo su gns3
 cd ~
+sudo systemctl status gns3
 clear
 ```
 Download and Extract the GNS3 Sample Project for testing
