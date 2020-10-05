@@ -224,7 +224,7 @@ login with gns3 user:
 sudo su gns3
 cd ~
 sudo systemctl status gns3
-clear
+
 ```
 Download and Extract the GNS3 Sample Project for testing
 ```bash
@@ -235,6 +235,7 @@ wget https://archive.org/download/gns3-on-gcp/projects.tar.gz
 tar -xf projects.tar.gz -C ~/GNS3/
 sudo systemctl reload gns3
 ls ~
+
 ```
 Find your instance Public IP and connect to it using browser<br/>
 _example:_ http://0.0.0.0:3080
