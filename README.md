@@ -186,6 +186,7 @@ sudo apt install docker.io
 **Dependencies:**
 - libc 
 - libcrypto
+
 First add i386 architecture support then update your system and install requirements.
 
 ```bash
@@ -194,7 +195,19 @@ sudo apt update
 sudo apt install libssl1.1:i386
 
 ```
+Installing license key to run Cisco IOU on syste.<br/>
+Make sure you are login with gns3 user
+```bash
+sudo bash -c 'printf "\0\0\0\0" > /etc/hostid'
+cd ~
+wget https://github.com/infotechca/gns3-on-gcp/blob/main/scripts/ciscoIOUKeygen_Python3.py
+chmod +x ciscoIOUKeygen_Python3.py
+python3 ./ciscoIOUKeygen_Python3.py
+cat < ~/iourc.txt > ~/.iourc
+sudo bash -c 'printf "\n127.0.0.127\txml.cisco.com  # Added by Me\n" >> /etc/hosts'
+cat /etc/hosts
 
+```
 ### 3.7 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 ```bash
 sudo adduser gns3
@@ -244,11 +257,11 @@ sudo systemctl status gns3
 Download and Extract the GNS3 Sample Project for testing
 ```bash
 cd ~
-wget https://archive.org/download/gns3-on-gcp/QEMU.tar.gz
-tar -xf QEMU.tar.gz -C ~/GNS3/images/
-wget https://archive.org/download/gns3-on-gcp/projects.tar.gz
-tar -xf projects.tar.gz -C ~/GNS3/
-sudo systemctl reload gns3
+wget https://archive.org/download/gns3-on-gcp/GNS3.tar.gz
+tar -xf GNS3.tar.gz -C ~/GNS3/
+wget https://github.com/infotechca/gns3-on-gcp/blob/main/conf/gns3_controller.conf
+mv ~/.config/GNS3/2.*/gns3_controller.conf
+sudo systemctl restart gns3
 ls ~
 
 ```
