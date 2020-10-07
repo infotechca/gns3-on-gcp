@@ -195,20 +195,6 @@ sudo apt update
 sudo apt install libssl1.1:i386 -y
 cd ~
 ```
-
-Installing license key to run Cisco IOU on syste.<br/>
-Make sure you are login with gns3 user
-```bash
-sudo bash -c 'printf "\0\0\0\0" > /etc/hostid'
-cd ~
-wget https://github.com/infotechca/gns3-on-gcp/blob/main/scripts/ciscoIOUKeygen_Python3.py
-chmod +x ciscoIOUKeygen_Python3.py
-python3 ./ciscoIOUKeygen_Python3.py
-cat < ~/iourc.txt > ~/.iourc
-sudo bash -c 'printf "\n127.0.0.127\txml.cisco.com  # Added by Me\n" >> /etc/hosts'
-cat /etc/hosts
-
-```
 ### 3.7 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 ```bash
 sudo adduser gns3
@@ -216,7 +202,7 @@ sudo adduser gns3
 sudo adduser gns3 sudo
 sudo adduser gns3 kvm
 sudo adduser gns3 docker
-
+groups gns3
 ```
 ---
 ##  4. Install GNS3 Server
@@ -241,6 +227,7 @@ cd ~
 sudo systemctl enable gns3
 sudo systemctl enable docker
 sudo virsh net-autostart default
+ls
 ```
 It is better to reboot your instance at this time.
 ```bash
@@ -253,18 +240,32 @@ login with gns3 user:
 sudo su gns3
 cd ~
 sudo systemctl status gns3
+:
 
 ```
-Download and Extract the GNS3 Sample Project for testing
+- Make sure you are login with gns3 user<br/>
+Download and Extract the GNS3 Sample Project for testing<br/>
+Installing license key to run Cisco IOU on syste.<br/>
 ```bash
 cd ~
 wget https://archive.org/download/gns3-on-gcp/GNS3.tar.gz
-tar -xf GNS3.tar.gz -C ~/GNS3/
-wget https://github.com/infotechca/gns3-on-gcp/blob/main/conf/gns3_controller.conf
-mv ~/.config/GNS3/2.*/gns3_controller.conf
+tar -xf GNS3.tar.gz -C ~/
+cp -r ~/home/gns3/GNS3/* ~/GNS3/
+rm -rf ~/home/
+mkdir ~/gns3_config_backup/
+cp ~/.config/GNS3/2.*/* ~/gns3_config_backup/
+wget https://archive.org/download/gns3-on-gcp/gns3_controller.conf
+mv gns3_controller.conf ~/.config/GNS3/2.*/
+sudo bash -c 'printf "\0\0\0\0" > /etc/hostid'
+cd ~
+wget https://archive.org/download/gns3-on-gcp/ciscoIOUKeygen_Python3.py
+chmod +x ciscoIOUKeygen_Python3.py
+python3 ./ciscoIOUKeygen_Python3.py
+cat < ~/iourc.txt > ~/.iourc
+sudo bash -c 'printf "\n127.0.0.127\txml.cisco.com  # Added by Me\n" >> /etc/hosts'
+cat /etc/hosts
 sudo systemctl restart gns3
-ls ~
-
+:
 ```
 Find your instance Public IP and connect to it using browser<br/>
 _example:_ http://0.0.0.0:3080
@@ -278,6 +279,7 @@ tar -xf gotop_v4.0.1_linux_amd64.tgz
 sudo mv gotop /usr/bin/
 rm gotop_v4.0.1_linux_amd64.tgz
 sudo gotop
+:
 
  ```
 ---
