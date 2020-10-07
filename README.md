@@ -179,7 +179,7 @@ sudo apt install qemu-kvm qemu-system-x86 cpulimit ovmf uml-utilities bridge-uti
 
 ### 3.5 Docker - Install
 ```bash
-sudo apt install docker.io 
+sudo apt install docker.io -y
 ```
 
 ### 3.6 Installing i386-libraries for IOU -(IOS on UNIX)
@@ -192,9 +192,10 @@ First add i386 architecture support then update your system and install requirem
 ```bash
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install libssl1.1:i386
-
+sudo apt install libssl1.1:i386 -y
+cd ~
 ```
+
 Installing license key to run Cisco IOU on syste.<br/>
 Make sure you are login with gns3 user
 ```bash
