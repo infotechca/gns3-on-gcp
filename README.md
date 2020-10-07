@@ -18,7 +18,8 @@
   - [x] 3.3 VPCS - Download and Install
   - [x] 3.4 QEMU and NAT (libvirt) - Install
   - [x] 3.5 Docker - Install
-  - [x] 3.6 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
+  - [x] 3.6 Installing i386-libraries for IOU -(IOS on UNIX)
+  - [x] 3.7 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 - [x] 4. Install GNS3 Server
   - [x] 4.1 Set GNS3 server as a daemon (auto start at boot time)
 - [x] 5. Testing GNS3Server
@@ -120,7 +121,7 @@ sudo apt update && sudo apt upgrade -y && sudo reboot
 For Ubuntu or other Debian based Linux you need to install this package:
 - libpcap-dev
 ```bash
-sudo apt install make gcc git libpcap-dev -y
+sudo apt install make gcc libpcap-dev git wget -y
 ```
 uBridge - Download, Compile and Install
 ```bash
@@ -161,7 +162,6 @@ cd ~
 ### 3.3 VPCS - Download and Install
 
 ```bash
-sudo apt install wget
 
 cd ~
 wget https://github.com/GNS3/vpcs/releases/download/v0.6.1/vpcs
@@ -181,7 +181,21 @@ sudo apt install qemu-kvm qemu-system-x86 cpulimit ovmf uml-utilities bridge-uti
 ```bash
 sudo apt install docker.io 
 ```
-### 3.6 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
+
+### 3.6 Installing i386-libraries for IOU -(IOS on UNIX)
+**Dependencies:**
+- libc 
+- libcrypto
+First add i386 architecture support then update your system and install requirements.
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install libssl1.1:i386
+
+```
+
+### 3.7 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 ```bash
 sudo adduser gns3
 
