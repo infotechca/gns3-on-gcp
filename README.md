@@ -1,6 +1,6 @@
 # Install GNS3 Server on Google Cloud (**_KVM Enabled VM_**)
 
-**Tested on Debian10 and Ubuntu 20**
+**Well Tested on Debian10 and Ubuntu 20**
 
 ## _Steups to do_
 
@@ -77,12 +77,12 @@ gcloud compute zones describe asia-southeast1-b
 Create a VM instance using the new custom image with the license<br/>
 Minimum Alternatives:
 - ~**`Intel Skylake`**~ to **`Intel Haswell`**<br/>
-- ~**`n1-standard-2`**~ to **`n1-standard-1`**<br/>
+- ~**`n1-standard-8`**~ to **`n1-standard-1`**<br/>
 - ~**`pd-ssd`**~ to **`pd-standard`**<br/>
 
 ```bash
 gcloud compute instances create gns3server --zone asia-southeast1-b \
-              --min-cpu-platform "Intel Skylake" --machine-type=n1-standard-2 \
+              --min-cpu-platform "Intel Skylake" --machine-type=n1-standard-8 \
               --boot-disk-size=30GB --boot-disk-type=pd-ssd \
               --tags http-server,https-server \
               --image kvm-image
