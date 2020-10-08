@@ -251,9 +251,9 @@ sudo systemctl status gns3
 :
 
 ```
-- Make sure you are login with gns3 user<br/>
-Download and Extract the GNS3 Sample Project for testing<br/>
-Installing license key to run Cisco IOU on syste.<br/>
+- Make sure you are login with gns3 user
+- Download and Extract the GNS3 Sample Project for testing<br/>
+- Installing license key to run Cisco IOU on system.<br/>
 ```bash
 cd ~
 sudo pip3 install gdown
