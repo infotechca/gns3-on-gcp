@@ -19,7 +19,8 @@
   - [x] 3.4 QEMU and NAT (libvirt) - Install
   - [x] 3.5 Docker - Install
   - [x] 3.6 Installing i386-libraries for IOU -(IOS on UNIX)
-  - [x] 3.7 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
+  - [x] 3.7 Installing Wireshark
+  - [x] 3.8 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 - [x] 4. Install GNS3 Server
   - [x] 4.1 Set GNS3 server as a daemon (auto start at boot time)
 - [x] 5. Testing GNS3Server
@@ -195,14 +196,21 @@ sudo apt update
 sudo apt install libssl1.1:i386 -y
 cd ~
 ```
-### 3.7 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
+### 3.7 Installing Wireshark
+**"Should non-superusers be able to capture packets?"** select `Yes`.
+```bash
+sudo apt install wireshark
+```
+### 3.8 Create a user for GNS3Server - User: **`gns3`** Pass: **`gns3`**
 ```bash
 sudo adduser gns3
 
 sudo adduser gns3 sudo
 sudo adduser gns3 kvm
 sudo adduser gns3 docker
+sudo adduser gns3 wireshark
 groups gns3
+:
 ```
 ---
 ##  4. Install GNS3 Server
@@ -220,7 +228,7 @@ cd init
 sudo cp gns3.service.systemd /lib/systemd/system/gns3.service
 sudo chown root /lib/systemd/system/gns3.service
 cd ~
-
+:
 ```
 ### 4.1 Set GNS3 server as a daemon (auto start at boot time)
 ```bash
@@ -248,7 +256,8 @@ Download and Extract the GNS3 Sample Project for testing<br/>
 Installing license key to run Cisco IOU on syste.<br/>
 ```bash
 cd ~
-wget https://archive.org/download/gns3-on-gcp/GNS3.tar.gz
+sudo pip3 install gdown
+gdown https://drive.google.com/uc?id=1HDeSeUS2KuyAAk9g4Lxrq7PXltHPscA7
 tar -xf GNS3.tar.gz -C ~/
 cp -r ~/home/gns3/GNS3/* ~/GNS3/
 rm -rf ~/home/
