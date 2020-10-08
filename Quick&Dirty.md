@@ -5,7 +5,7 @@ sudo dpkg --add-architecture i386 && sudo apt update && sudo apt upgrade -y && s
 ```
 
 ```bash
-sudo apt install make gcc libpcap-dev git wget cmake libelf-dev libpcap0.8-dev qemu-kvm qemu-system-x86 cpulimit ovmf uml-utilities bridge-utils virtinst libvirt-daemon-system libvirt-clients docker.io libssl1.1:i386 python3-setuptools python3-pip python3-aiohttp python3-psutil python3-jsonschema -y
+sudo apt install make gcc libpcap-dev git wget cmake libelf-dev libpcap0.8-dev qemu-kvm qemu-system-x86 cpulimit ovmf uml-utilities bridge-utils virtinst libvirt-daemon-system libvirt-clients docker.io libssl1.1:i386 python3-setuptools python3-pip python3-aiohttp python3-psutil python3-jsonschema wireshark -y
 ```
 ```bash
 cd ~
@@ -38,6 +38,7 @@ sudo adduser gns3
 sudo adduser gns3 sudo
 sudo adduser gns3 kvm
 sudo adduser gns3 docker
+sudo adduser gns3 wireshark
 cd ~
 git clone https://github.com/GNS3/gns3-server.git
 cd gns3-server
@@ -59,7 +60,8 @@ sudo systemctl status gns3
 ```
 
 ```bash
-wget https://archive.org/download/gns3-on-gcp/GNS3.tar.gz
+sudo pip3 install gdown
+gdown https://drive.google.com/uc?id=1HDeSeUS2KuyAAk9g4Lxrq7PXltHPscA7
 tar -xf GNS3.tar.gz -C ~/
 cp -r ~/home/gns3/GNS3/* ~/GNS3/
 rm -rf ~/home/
