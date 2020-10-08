@@ -55,6 +55,7 @@ sudo reboot
 
 ```bash
 sudo su gns3
+cd ~
 sudo systemctl status gns3
 :
 ```
