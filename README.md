@@ -56,8 +56,21 @@ There are two steps required to used nested virtualization:<br/>
 - The VM instances for which you want to use nested virtualization must use a custom image with a special license key.<br/>
 - To enable nested virtualization on a VM instance, create a custom image with a special license key that enables VMX in VM.<br/>
 - Create a boot disk from a public image or from a custom image with an operating system.<br/>
+
+```bash
+gcloud compute images list
+
+NAME                            PROJECT              FAMILY                  DEPRECATED  STATUS
+debian-10-buster-v20200910      debian-cloud         debian-10                           READY
+ubuntu-2004-focal-v20200917     ubuntu-os-cloud      ubuntu-2004-lts                     READY
+```
+Debian Disk
 ```bash
 gcloud compute disks create disk1 --image-project debian-cloud --image-family debian-10 --zone asia-southeast1-b
+```
+Ubuntu Disk
+```bash
+gcloud compute disks create disk1 --image-project ubuntu-os-cloud --image-family ubuntu-2004-lts 
 ```
 ### 2.2 Create a custom image with a special license key for virtualization
 Using the boot disk that you created, create a custom image with the special license key required for virtualization.<br/>
